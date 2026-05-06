@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -59,9 +61,6 @@
   --chart-4: 41 70% 70%;
   --chart-5: 0 0% 55%;
 
-  --app-font-sans: 'Inter', system-ui, sans-serif;
-  --app-font-serif: Georgia, serif;
-  --app-font-mono: 'JetBrains Mono', 'Fira Code', Menlo, monospace;
   --radius: 0.75rem;
 
   --shadow-2xs: 0px 1px 2px 0px rgba(0,0,0,0.04);
@@ -74,22 +73,14 @@
   --shadow-2xl: 0px 24px 60px 0px rgba(0,0,0,0.18);
 
   --tracking-normal: -0.01em;
-  --spacing: 0.25rem;
 
-  --sidebar-primary-border: hsl(var(--sidebar-primary));
-  --sidebar-primary-border: hsl(from hsl(var(--sidebar-primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-  --sidebar-accent-border: hsl(var(--sidebar-accent));
-  --sidebar-accent-border: hsl(from hsl(var(--sidebar-accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-  --primary-border: hsl(var(--primary));
-  --primary-border: hsl(from hsl(var(--primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-  --secondary-border: hsl(var(--secondary));
-  --secondary-border: hsl(from hsl(var(--secondary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-  --muted-border: hsl(var(--muted));
-  --muted-border: hsl(from hsl(var(--muted)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-  --accent-border: hsl(var(--accent));
-  --accent-border: hsl(from hsl(var(--accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-  --destructive-border: hsl(var(--destructive));
-  --destructive-border: hsl(from hsl(var(--destructive)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --sidebar-primary-border: hsl(0 0% 4%);
+  --sidebar-accent-border: hsl(340 40% 86%);
+  --primary-border: hsl(41 52% 46%);
+  --secondary-border: hsl(340 30% 85%);
+  --muted-border: hsl(340 25% 85%);
+  --accent-border: hsl(340 40% 86%);
+  --destructive-border: hsl(0 72% 43%);
 }
 
 .dark {
@@ -154,20 +145,13 @@
   --shadow-xl: 0px 16px 40px 0px rgba(0,0,0,0.7), 0px 8px 10px -1px rgba(0,0,0,0.4);
   --shadow-2xl: 0px 24px 60px 0px rgba(0,0,0,0.8);
 
-  --sidebar-primary-border: hsl(var(--sidebar-primary));
-  --sidebar-primary-border: hsl(from hsl(var(--sidebar-primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-  --sidebar-accent-border: hsl(var(--sidebar-accent));
-  --sidebar-accent-border: hsl(from hsl(var(--sidebar-accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-  --primary-border: hsl(var(--primary));
-  --primary-border: hsl(from hsl(var(--primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-  --secondary-border: hsl(var(--secondary));
-  --secondary-border: hsl(from hsl(var(--secondary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-  --muted-border: hsl(var(--muted));
-  --muted-border: hsl(from hsl(var(--muted)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-  --accent-border: hsl(var(--accent));
-  --accent-border: hsl(from hsl(var(--accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-  --destructive-border: hsl(var(--destructive));
-  --destructive-border: hsl(from hsl(var(--destructive)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --sidebar-primary-border: hsl(41 52% 63%);
+  --sidebar-accent-border: hsl(0 0% 21%);
+  --primary-border: hsl(41 52% 63%);
+  --secondary-border: hsl(0 0% 23%);
+  --muted-border: hsl(0 0% 21%);
+  --accent-border: hsl(0 0% 23%);
+  --destructive-border: hsl(0 65% 59%);
 }
 
 @layer base {
@@ -176,7 +160,8 @@
   }
 
   body {
-    @apply font-sans antialiased bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
     letter-spacing: var(--tracking-normal);
   }
 }
