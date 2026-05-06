@@ -40,7 +40,7 @@ export function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[#FDF4F7]/80 backdrop-blur-xl border-b border-black/8">
       <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
         <Link href="/" className="flex items-center gap-2 shrink-0">
-  <img src={logoLight} alt="Runway Objects" className="h-9 w-9 object-contain" />
+  <img src={logoLight} alt="Runway Objects" className="h-11 w-11 object-contain" />
   <span className="logo-font text-2xl leading-none">Runway Objects</span>
 </Link>
 
