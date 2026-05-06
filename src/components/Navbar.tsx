@@ -126,6 +126,21 @@ export function Navbar() {
             >
               Sign In
             </Button>
+
+      <Button onClick={signInWithGoogle}>
+  Continue with Google
+</Button>
+
+<Button
+  onClick={async () => {
+    const email = prompt("Enter email");
+    if (!email) return;
+    await signInWithEmail(email);
+    alert("Check your email");
+  }}
+>
+  Continue with Email
+</Button>
           )}
 
           <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
