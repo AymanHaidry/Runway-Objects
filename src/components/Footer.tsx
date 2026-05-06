@@ -50,7 +50,7 @@ export function Footer() {
             {[
               { name: "Privacy Policy", href: "/privacy-policy" },
               { name: "Terms of Service", href: "/terms-of-service" },
-              { name: "Return Policy", href: "/return-policy" },
+              { name: "Return Policy", href: "/terms-of-service" },
             ].map((link) => (
               <a
                 key={link.name}
