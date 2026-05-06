@@ -56,13 +56,21 @@ export default function Home() {
           }}
         />
 
-        <div className="relative z-10 flex flex-col items-center text-center max-w-4xl mx-auto">
-          <div
-            className="mb-8 animate-[fadeIn_1s_ease-out]"
-            style={{ animation: "fadeIn 1s ease-out" }}
-          >
-            <img src={logoLight} alt="Runway Objects" className="h-32 md:h-44 w-auto mx-auto drop-shadow-2xl" />
-          </div>
+        <div className="mb-10" style={{ animation: "fadeIn 1s ease-out" }}>
+  
+  <div
+    className="text-5xl md:text-7xl text-black mb-4"
+    style={{
+      fontFamily: "Balgin",
+      fontWeight: 400,
+      letterSpacing: "-0.06em",
+      fontStyle: "italic",
+    }}
+  >
+    Runway Objects
+  </div>
+
+</div>
 
         <h1
   style={{
