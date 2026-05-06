@@ -26,8 +26,25 @@ if (!basePath) {
   );
 }
 
+// Replit secrets are swapped — correct them here at build/dev time
+const supabaseUrl = process.env.VITE_SUPABASE_ANON_KEY?.startsWith("http")
+  ? process.env.VITE_SUPABASE_ANON_KEY
+  : process.env.VITE_SUPABASE_URL?.startsWith("http")
+  ? process.env.VITE_SUPABASE_URL
+  : "";
+
+const supabaseAnonKey = process.env.VITE_SUPABASE_URL?.startsWith("eyJ")
+  ? process.env.VITE_SUPABASE_URL
+  : process.env.VITE_SUPABASE_ANON_KEY?.startsWith("eyJ")
+  ? process.env.VITE_SUPABASE_ANON_KEY
+  : "";
+
 export default defineConfig({
   base: basePath,
+  define: {
+    "import.meta.env.VITE_SUPABASE_URL": JSON.stringify(supabaseUrl),
+    "import.meta.env.VITE_SUPABASE_ANON_KEY": JSON.stringify(supabaseAnonKey),
+  },
   plugins: [
     react(),
     tailwindcss(),
