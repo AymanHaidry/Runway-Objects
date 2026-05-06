@@ -14,7 +14,7 @@ import {
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ShoppingCart, Menu, User, LogOut, Settings, Package, Shield, Star } from "lucide-react";
-import logoLight from "/logo-light.png";
+import logoLight from "/favicon.svg";
 
 const TIER_COLORS: Record<string, string> = {
   standard: "bg-gray-100 text-gray-700",
