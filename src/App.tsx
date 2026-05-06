@@ -11,7 +11,7 @@ import Home from "@/pages/home";
 import Store from "@/pages/store";
 import ProductPage from "@/pages/product";
 import Cart from "@/pages/cart";
-import login from "@/pages/login";
+import Login from "@/pages/Login";
 import Account from "@/pages/account";
 import Orders from "@/pages/orders";
 import Membership from "@/pages/membership";
@@ -28,6 +28,7 @@ function Router() {
     <>
       <Navbar />
       <Switch>
+        <Route path="/login" component={Login} />
         <Route path="/" component={Home} />
         <Route path="/store" component={Store} />
         <Route path="/product/:id" component={ProductPage} />
