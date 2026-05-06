@@ -9,6 +9,7 @@ type AuthContextType = {
   profile: UserProfile | null;
   loading: boolean;
   signInWithGoogle: () => Promise<void>;
+  signInWithEmail: (email: string) => Promise<void>; // 👈 ADD THIS
   signOut: () => Promise<void>;
   refreshProfile: () => Promise<void>;
 };
@@ -78,13 +79,19 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       options: { redirectTo: window.location.origin },
     });
   }
+  async function signInWithEmail(email: string) {
+  await supabase.auth.signInWithOtp({
+    email,
+    options: {
+      emailRedirectTo: window.location.origin,
+    },
 
   async function signOut() {
     await supabase.auth.signOut();
   }
 
   return (
-    <AuthContext.Provider value={{ session, user, profile, loading, signInWithGoogle, signOut, refreshProfile }}>
+    <AuthContext.Provider value={{ session, user, profile, loading, signInWithGoogle, signInWithEmail, signOut, refreshProfile }}>
       {children}
     </AuthContext.Provider>
   );
