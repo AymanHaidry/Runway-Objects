@@ -6,12 +6,6 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body {
-  font-family: 'Balgin', 'Inter', sans-serif;
-}
-* {
-  font-family: 'Balgin', 'Inter', sans-serif;
-}
 
 /* LIGHT MODE — Runway Objects Brand */
 :root {
