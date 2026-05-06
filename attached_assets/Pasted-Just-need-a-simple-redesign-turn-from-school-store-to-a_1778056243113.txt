@@ -1,0 +1,48 @@
+Just need a simple redesign.
+turn from school store to a aviation collectibles store.
+ill drop some store notes:
+gimme a store page. everything- booking, payment (rn takes to whatsapp via api.whatsapp.com), tracking, payments, cart (account/localstorage), accounts, tiers, memberships, inventory manager, product pages with reviews descriptions and images, and an admin page. 
+also this: 1️⃣ Public QR (Customer-facing) Good idea. This should be:
+* Story
+* Images
+* Aircraft inspiration
+* Edition lore
+* “collectible identity” 👉 Name it properly: Runway Passport QR 2️⃣ Private QR (Company/service layer) This is the powerful one. What you described:
+* manufacturing date
+* batch tracking
+* warranty validation
+* service logs
+* ownership registration That is literally: 👉 Runway Objects Registry (ROR) ⚙️ Important improvement (this is key) Don’t make the second QR “just a QR”. Position it like this: “Secure maintenance interface — access restricted” Because otherwise it feels like “hidden admin page”. Each aircraft comes with a Service Tag too. if the QR isnt accessible, we can go to the ROR system and enter the service tag. 🧾 Clean naming hierarchy (this will elevate everything) 🟡 PUBLIC SIDE Runway Passport
+* story
+* visuals
+* aircraft inspiration
+* edition narrative 🔵 PRIVATE SIDE Runway Objects REgistry (Secure)
+* batch ID
+* production logs
+* warranty
+* servicing history
+* ownership transfer
+use supabase. optimize for mobile 
+It is of the company Runway Objects. 
+achievements r there too (u decide when someone gets one): 
+Pilot’s Dream (chosen aircraft type) 
+Wingspan 
+Cloud Nine 
+Hangar Stories 
+Dreamliner Desk (3+ 787s) 
+Airbase 
+Aviary 
+Jetset 
+Terminal One 
+Runway Collective 
+Cockpit Objects 
+ colours:`#FDF4F7` base, gold and solid black accents. 
+fonts: balgin, logo- brittany 
+sleek feel. apple 2050 liquid glass.
+AND, YOU BETTER SPLIT INTO MULTIPLE FILES 
+give all files at once. 
+give only code. no explanation is to be given.
+ur outputs shall be reviewed by codex.
+use ONLY my logo
+
+HTML only

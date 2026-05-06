@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Runway Objects"
+version = "1.0.0"
+id = "artifacts/runway-objects"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 22997
+
+[services.development]
+run = "pnpm --filter @workspace/runway-objects run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/runway-objects", "run", "build" ]
+publicDir = "artifacts/runway-objects/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "22997"
+BASE_PATH = "/"
