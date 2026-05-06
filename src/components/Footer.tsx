@@ -24,15 +24,24 @@ export function Footer() {
           </div>
         </div>
         <div>
-          <p className="text-xs font-semibold uppercase tracking-widest text-black/40 mb-4">Legal</p>
-          <div className="flex flex-col gap-2">
-            {["Privacy Policy", "Terms of Service", "Return Policy"].map((l) => (
-              <span key={l} className="text-sm text-black/60 cursor-pointer hover:text-black transition-colors">{l}</span>
-            ))}
-          </div>
-        </div>
-      </div>
-      <div className="border-t border-black/8 py-4 px-4 text-center text-xs text-black/30">
+  <p className="text-xs font-semibold uppercase tracking-widest text-black/40 mb-4">Legal</p>
+  <div className="flex flex-col gap-2">
+    {[
+      { name: "Privacy Policy", href: "./privacy-policy.html" },
+      { name: "Terms of Service", href: "./terms-of-service.html" },
+      { name: "Return Policy", href: "./return-policy.html" },
+    ].map((link) => (
+      <a 
+        key={link.name} 
+        href={link.href} 
+        className="text-sm text-black/60 cursor-pointer hover:text-black transition-colors"
+      >
+        {link.name}
+      </a>
+    ))}
+  </div>
+</div>
+          <div className="border-t border-black/8 py-4 px-4 text-center text-xs text-black/30">
         © {new Date().getFullYear()} Runway Objects. All rights reserved.
       </div>
     </footer>
