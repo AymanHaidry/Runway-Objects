@@ -1,0 +1,12 @@
+{
+  "builds": [
+    {
+      "src": "artifacts/runway-objects/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    }
+  ]
+}
+
