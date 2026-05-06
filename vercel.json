@@ -1,4 +1,7 @@
 {
   "regions": ["bom1"],
   "cleanUrls": true
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/" }
+  ]
 }
