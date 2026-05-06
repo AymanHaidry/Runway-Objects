@@ -1,10 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 @import url('https://fonts.cdnfonts.com/css/brittany-signature');
+@import url('https://fonts.cdnfonts.com/css/balgin');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+html, body {
+  font-family: 'Balgin', 'Inter', sans-serif;
+}
+* {
+  font-family: 'Balgin', 'Inter', sans-serif;
+}
 
 /* LIGHT MODE — Runway Objects Brand */
 :root {
