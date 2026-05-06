@@ -249,7 +249,7 @@ export default function Admin() {
               </Button>
             </div>
 
-            {(editProduct === "new" || (editProduct && editProduct !== "new")) && (
+            {editProduct !== null && (
               <div className="mb-6">
                 <ProductForm
                   product={editProduct !== "new" ? editProduct : null}
