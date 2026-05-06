@@ -64,16 +64,21 @@ export default function Home() {
             <img src={logoLight} alt="Runway Objects" className="h-32 md:h-44 w-auto mx-auto drop-shadow-2xl" />
           </div>
 
-          <h1
-            className="text-5xl md:text-7xl font-black tracking-tight text-black mb-4 leading-none"
-            style={{ fontFamily: "'Balgin', 'Inter', sans-serif", animation: "slideUp 0.8s ease-out 0.2s both" }}
-          >
-            It Doesn't Fly.
-            <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-amber-700">
-              It Aspires.
-            </span>
-          </h1>
+        <h1
+  style={{
+    fontFamily: "Balgin",
+    fontWeight: 900,
+    letterSpacing: "-0.04em",
+    animation: "slideUp 0.8s ease-out 0.2s both",
+  }}
+  className="text-5xl md:text-7xl text-black mb-4 leading-none"
+>
+  It Doesn't Fly.
+  <br />
+  <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-amber-700">
+    It Aspires. Beautifully.
+  </span>
+</h1>
 
           <p className="text-lg md:text-xl text-black/50 max-w-xl mb-10 leading-relaxed" style={{ animation: "slideUp 0.8s ease-out 0.4s both" }}>
             Precision aviation collectibles. Each piece carries a story, a soul, and a serial number.
