@@ -11,7 +11,7 @@ import Home from "@/pages/home";
 import Store from "@/pages/store";
 import ProductPage from "@/pages/product";
 import Cart from "@/pages/cart";
-import Login from "@/pages/Login";
+import Login from "@/pages/login";
 import Account from "@/pages/account";
 import Orders from "@/pages/orders";
 import Membership from "@/pages/membership";
