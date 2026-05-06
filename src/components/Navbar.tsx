@@ -49,12 +49,12 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
 
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
-          <img src={logoLight} alt="Runway Objects" className="h-10 w-10" />
-          <span className="font-semibold text-lg tracking-tight">
-            Runway Objects
-          </span>
-        </Link>
+       <Link href="/" className="flex items-center gap-2">
+  <img src={logoLight} alt="Runway Objects" className="h-10 w-10" />
+  <span className="logo-font text-lg">
+    Runway Objects
+  </span>
+</Link>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-6">
