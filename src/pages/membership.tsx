@@ -3,6 +3,7 @@ import { supabase } from "@/lib/supabase";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
+import { useLocation } from "wouter";
 import { useState } from "react";
 import { Check } from "lucide-react";
 
@@ -52,12 +53,13 @@ const PLANS = [
 ];
 
 export default function Membership() {
-  const { user, profile, signInWithGoogle, refreshProfile } = useAuth();
+  const { user, profile, refreshProfile } = useAuth();
   const { toast } = useToast();
+  const [, navigate] = useLocation();
   const [loading, setLoading] = useState<string | null>(null);
 
   async function handleJoin(planId: string) {
-    if (!user) { signInWithGoogle(); return; }
+    if (!user) { navigate("/login"); return; }
     if (profile?.membership === planId) return;
     setLoading(planId);
     const { error } = await supabase.from("profiles").update({ membership: planId }).eq("id", user.id);
@@ -98,17 +100,13 @@ export default function Membership() {
                   </Badge>
                 )}
 
-                <h3 className={`text-lg font-black mb-1 ${plan.highlight ? "text-white" : "text-black"}`}>
-                  {plan.name}
-                </h3>
+                <h3 className={`text-lg font-black mb-1 ${plan.highlight ? "text-white" : "text-black"}`}>{plan.name}</h3>
                 <div className="mb-6">
                   {plan.price === 0 ? (
                     <span className={`text-3xl font-black ${plan.highlight ? "text-white" : "text-black"}`}>Free</span>
                   ) : (
                     <div className="flex items-baseline gap-1">
-                      <span className={`text-3xl font-black ${plan.highlight ? "text-white" : "text-black"}`}>
-                        ${plan.price}
-                      </span>
+                      <span className={`text-3xl font-black ${plan.highlight ? "text-white" : "text-black"}`}>${plan.price}</span>
                       <span className={`text-sm ${plan.highlight ? "text-white/50" : "text-black/40"}`}>/mo</span>
                     </div>
                   )}
