@@ -1,3 +1,4 @@
+// ─── orders.tsx ──────────────────────────────────────────────
 import { useEffect, useState } from "react";
 import { useAuth } from "@/lib/auth";
 import { supabase } from "@/lib/supabase";
@@ -9,14 +10,14 @@ import type { Order } from "@/lib/supabase";
 import { Package, MessageCircle, ArrowLeft } from "lucide-react";
 
 const STATUS_STYLES: Record<string, string> = {
-  pending: "bg-yellow-100 text-yellow-800",
+  pending:    "bg-yellow-100 text-yellow-800",
   processing: "bg-blue-100 text-blue-800",
-  shipped: "bg-purple-100 text-purple-800",
-  delivered: "bg-green-100 text-green-800",
+  shipped:    "bg-purple-100 text-purple-800",
+  delivered:  "bg-green-100 text-green-800",
 };
 
 export default function Orders() {
-  const { user, signInWithGoogle } = useAuth();
+  const { user } = useAuth();
   const [, navigate] = useLocation();
   const [orders, setOrders] = useState<Order[]>([]);
   const [loading, setLoading] = useState(true);
@@ -40,8 +41,8 @@ export default function Orders() {
         <Package className="h-16 w-16 text-black/15" />
         <div className="text-center">
           <h2 className="text-xl font-bold text-black mb-2">Sign in to view your orders</h2>
-          <Button onClick={signInWithGoogle} className="bg-black text-white rounded-full mt-4" data-testid="button-signin">
-            Sign in with Google
+          <Button onClick={() => navigate("/login")} className="bg-black text-white rounded-full mt-4" data-testid="button-signin">
+            Sign In
           </Button>
         </div>
       </div>
@@ -64,9 +65,7 @@ export default function Orders() {
           <div className="text-center py-24">
             <Package className="h-12 w-12 text-black/15 mx-auto mb-4" />
             <p className="text-black/40 text-sm">No orders yet.</p>
-            <Button onClick={() => navigate("/store")} className="bg-black text-white rounded-full mt-4">
-              Shop Now
-            </Button>
+            <Button onClick={() => navigate("/store")} className="bg-black text-white rounded-full mt-4">Shop Now</Button>
           </div>
         ) : (
           <div className="space-y-4">
