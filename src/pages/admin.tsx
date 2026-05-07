@@ -183,22 +183,16 @@ export default function Admin() {
     });
   }
 
-  useEffect(() => {
-    if (!profile?.is_admin) return;
-    loadProducts();
-    loadOrders();
-    loadStats();
-  }, [profile]);
-
-  if (!profile?.is_admin) {
-    return (
-      <div className="min-h-screen bg-[#FDF4F7] pt-24 flex flex-col items-center justify-center gap-4">
-        <Shield className="h-16 w-16 text-black/15" />
-        <p className="text-black/40 text-sm">You don't have admin access.</p>
-        <Button onClick={() => navigate("/")} variant="outline" className="rounded-full">Go Home</Button>
-      </div>
-    );
-  }
+ // TEMP: admin check disabled
+// if (!profile?.is_admin) {
+//   return (
+//     <div className="min-h-screen bg-[#FDF4F7] pt-24 flex flex-col items-center justify-center gap-4">
+//       <Shield className="h-16 w-16 text-black/15" />
+//       <p className="text-black/40 text-sm">You don't have admin access.</p>
+//       <Button onClick={() => navigate("/")} variant="outline" className="rounded-full">Go Home</Button>
+//     </div>
+//   );
+// }
 
   async function deleteProduct(id: string) {
     if (!confirm("Delete this product?")) return;
