@@ -10,14 +10,14 @@ import { useLocation } from "wouter";
 import { User, Save } from "lucide-react";
 
 const TIER_LABELS: Record<string, { label: string; color: string; next?: string }> = {
-  standard: { label: "Standard", color: "bg-gray-100 text-gray-800", next: "Silver (5 orders)" },
-  silver: { label: "Silver", color: "bg-gray-200 text-gray-800", next: "Gold (15 orders)" },
-  gold: { label: "Gold", color: "bg-amber-100 text-amber-800", next: "Platinum (30 orders)" },
+  standard: { label: "Standard", color: "bg-gray-100 text-gray-800",   next: "Silver (5 orders)" },
+  silver:   { label: "Silver",   color: "bg-gray-200 text-gray-800",   next: "Gold (15 orders)" },
+  gold:     { label: "Gold",     color: "bg-amber-100 text-amber-800", next: "Platinum (30 orders)" },
   platinum: { label: "Platinum", color: "bg-purple-100 text-purple-800" },
 };
 
 export default function Account() {
-  const { user, profile, signInWithGoogle, refreshProfile } = useAuth();
+  const { user, profile, refreshProfile } = useAuth();
   const { toast } = useToast();
   const [, navigate] = useLocation();
   const [name, setName] = useState(profile?.full_name ?? "");
@@ -32,8 +32,8 @@ export default function Account() {
         <div className="text-center">
           <h2 className="text-xl font-bold text-black mb-2">Sign in to access your account</h2>
           <p className="text-sm text-black/40 mb-6">View your orders, achievements, and collector tier.</p>
-          <Button onClick={signInWithGoogle} className="bg-black text-white rounded-full" data-testid="button-signin">
-            Sign in with Google
+          <Button onClick={() => navigate("/login")} className="bg-black text-white rounded-full" data-testid="button-signin">
+            Sign In
           </Button>
         </div>
       </div>
@@ -111,9 +111,9 @@ export default function Account() {
         {/* Quick links */}
         <div className="grid grid-cols-2 gap-4">
           {[
-            { label: "My Orders", path: "/orders" },
+            { label: "My Orders",    path: "/orders" },
             { label: "Achievements", path: "/achievements" },
-            { label: "Membership", path: "/membership" },
+            { label: "Membership",   path: "/membership" },
             { label: "ROR Registry", path: "/registry" },
           ].map(({ label, path }) => (
             <button
