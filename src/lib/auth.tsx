@@ -8,8 +8,8 @@ type AuthContextType = {
   user: User | null;
   profile: UserProfile | null;
   loading: boolean;
-  signInWithGoogle: () => Promise<void>;
-  signInWithEmail: (email: string) => Promise<void>; // ✅ added
+  signUp: (email: string, password: string, fullName: string) => Promise<{ error: string | null }>;
+  signIn: (email: string, password: string) => Promise<{ error: string | null }>;
   signOut: () => Promise<void>;
   refreshProfile: () => Promise<void>;
 };
@@ -28,7 +28,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       .select("*")
       .eq("id", userId)
       .single();
-
     if (data) setProfile(data as UserProfile);
   }
 
@@ -40,7 +39,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
       setUser(session?.user ?? null);
-
       if (session?.user) {
         fetchProfile(session.user.id).finally(() => setLoading(false));
       } else {
@@ -52,9 +50,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       async (_event, session) => {
         setSession(session);
         setUser(session?.user ?? null);
-
         if (session?.user) {
-          await ensureProfile(session.user);
           await fetchProfile(session.user.id);
         } else {
           setProfile(null);
@@ -65,44 +61,49 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return () => subscription.unsubscribe();
   }, []);
 
-  async function ensureProfile(user: User) {
-    const { data } = await supabase
-      .from("profiles")
-      .select("id")
-      .eq("id", user.id)
-      .single();
-
-    if (!data) {
-      await supabase.from("profiles").insert({
-        id: user.id,
-        email: user.email,
-        full_name: user.user_metadata?.full_name ?? null,
-        avatar_url: user.user_metadata?.avatar_url ?? null,
-        tier: "standard",
-        membership: "free",
-        achievements: [],
-        is_admin: false,
-      });
-    }
-  }
-
-  async function signInWithGoogle() {
-    await supabase.auth.signInWithOAuth({
-      provider: "google",
-      options: {
-        redirectTo: window.location.origin,
-      },
-    });
-  }
-
-  // ✅ NEW: Email magic link login
-  async function signInWithEmail(email: string) {
-    await supabase.auth.signInWithOtp({
+  async function signUp(
+    email: string,
+    password: string,
+    fullName: string
+  ): Promise<{ error: string | null }> {
+    const { data, error } = await supabase.auth.signUp({
       email,
+      password,
       options: {
+        data: { full_name: fullName },
         emailRedirectTo: window.location.origin,
       },
     });
+
+    if (error) return { error: error.message };
+
+    // If email confirmation is disabled in Supabase, user is immediately available.
+    // Manually upsert profile in case trigger hasn't fired yet.
+    if (data.user) {
+      await supabase.from("profiles").upsert(
+        {
+          id: data.user.id,
+          email,
+          full_name: fullName,
+          tier: "standard",
+          membership: "free",
+          achievements: [],
+          is_admin: false,
+        },
+        { onConflict: "id" }
+      );
+    }
+
+    return { error: null };
+  }
+
+  async function signIn(
+    email: string,
+    password: string
+  ): Promise<{ error: string | null }> {
+    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    if (error) return { error: error.message };
+    return { error: null };
   }
 
   async function signOut() {
@@ -116,8 +117,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         user,
         profile,
         loading,
-        signInWithGoogle,
-        signInWithEmail, // ✅ added
+        signUp,
+        signIn,
         signOut,
         refreshProfile,
       }}
