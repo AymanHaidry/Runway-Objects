@@ -25,5 +25,7 @@ export function buildWhatsAppUrl(items: CartItem[], total: number, orderId?: str
 }
 
 export function openWhatsApp(items: CartItem[], total: number, orderId?: string) {
-  window.open(buildWhatsAppUrl(items, total, orderId), "_blank");
+  const url = buildWhatsAppUrl(items, total, orderId);
+
+  window.open(url, "_blank", "noopener,noreferrer");
 }
